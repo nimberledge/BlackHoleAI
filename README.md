@@ -10,6 +10,7 @@ Some points to note:
 1. The first player will always play in red, adn the second always in blue.
 2. The computer may start the game, happens about once in 4 games.
 3. The result of the game is displayed on the console after the pygame window quits.
+4. DO NOT click the screen before the AI has played. You WILL cause the game to bug out, and I don't care about that.
 
 How to play:
 1. Download the folder in full

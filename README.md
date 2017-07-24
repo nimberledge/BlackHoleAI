@@ -7,7 +7,7 @@ Here is an AI that plays Black Hole against the user. Black Hole is a logic game
 2. The last space in the board will be considered a black hole, and the player with the least points sucked in will be the winner. If the points sucked in for both players are equal, it's a tie.
 
 Some points to note:
-1. The first player will always play in red, adn the second always in blue.
+1. The first player will always play in red, and the second always in blue.
 2. The computer may start the game, happens about once in 4 games.
 3. The result of the game is displayed on the console after the pygame window quits.
 4. DO NOT click the screen before the AI has played. You WILL cause the game to bug out, and I don't care about that.

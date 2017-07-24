@@ -43,7 +43,7 @@ class BlackHoleState(BaseGameState):
 
         moves_so_far = sum([1 for index in range(len(self.state_list)) if self.state_list[index]])
 
-        if moves_so_far >= 20:
+        if moves_so_far == 20:
             self._children = []
             return self._children
 

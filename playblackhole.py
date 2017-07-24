@@ -24,7 +24,7 @@ def game_loop():
     done = False
     end_game = False
     cpu_player = 0
-    tl = 1.5  # time limit for AI move
+    tl = 1  # time limit for AI move
     msg = ''
     while not done:
         events = pygame.event.get()
@@ -85,6 +85,7 @@ def game_loop():
         pygame.display.flip()
 
         if cpu_player == 1:
+            mc = sum([1 for key in range(len(board.state)) if board.state[key]])
             bh_state = BlackHoleState(board.state)
             st = time.time()
             end = st + tl
@@ -92,7 +93,6 @@ def game_loop():
             while time.time() < end:
                 move = bh_state.next_move(i, termination_time=end)
                 i += 1
-
 
             board.update_to_state(move.state)
             cpu_player = 0

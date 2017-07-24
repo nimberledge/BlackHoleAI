@@ -62,24 +62,24 @@ class BaseGameState(object):
             self.state_scores_cache[depth] = score
             return score
 
-        if termination_time:
-            if time.time() >= termination_time:
-                return self.static_score
-
         if not self.children:
             return self.static_score
+            
+        if termination_time:
+            if time.time() > termination_time:
+                return self.state_scores_cache[depth-1]
 
         children_scores = []
         for child in self.children:
             if termination_time and time.time() >= termination_time:
-                children_scores.append(child.dynamic_score(0, termination_time=termination_time))
-                continue
+                return self.state_scores_cache[depth-1]
+                # continue
 
             children_scores.append(child.dynamic_score(depth - 1, termination_time=termination_time))
 
         score = self.agg_fn(children_scores)
         self.state_scores_cache[depth] = score
-        return score
+        return self.state_scores_cache[depth]
 
     def next_move(self, depth, termination_time=None):
         """
@@ -91,7 +91,7 @@ class BaseGameState(object):
 
         if not self.children:
             return None
-        
+
         for child in self.children:
 
             if child.dynamic_score(depth-1, termination_time=termination_time) == score:
@@ -103,4 +103,3 @@ class BaseGameState(object):
 
 if __name__ == "__main__":
     print 'Hellow, world! This is me using Python 2'
-
